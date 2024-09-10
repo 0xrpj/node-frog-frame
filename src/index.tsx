@@ -208,17 +208,6 @@ app.frame('/finish', (c) => {
 })
 
 
-
-app.transaction('/mint', (c) => {
-  return c.contract({
-    abi,
-    chainId: 'eip155:84532',
-    functionName: 'mint',
-    args: ['0x20dBC835922E656D3480033b13A2042023D4bE2D', '1'],
-    to: '0xAFCD92e9A2FF186e43b4326Cd4e3eDD1b4686dcd'
-  })
-})
-
 const getARandomChar = async (userAddress: string) => {
   const data = await (await fetch(URL + "market/character/claim/get?address=" + userAddress + "&limit=1")).json();
   const nftId = data.highLevel[0].nft_id;
