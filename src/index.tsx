@@ -149,6 +149,8 @@ app.frame('/paid', async (c) => {
 
   if (transactionId) {
     console.log({ transactionId });
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
     const res = (await axios.post(URL + "tournament/base/notify_join", {
       txHash: transactionId
     }, {
