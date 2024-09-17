@@ -13,7 +13,7 @@ config();
 /*
   Constants
 */
-const { NAYNAR_API_KEY, FRAME_URL, URL, DISCORD_WEBHOOK, TOURNAMENT_PAYMENT_MANAGER } = process.env
+const { NAYNAR_API_KEY, FRAME_URL, URL, DISCORD_WEBHOOK, TOURNAMENT_PAYMENT_MANAGER, DEV_TOOLS } = process.env
 /*
   Types and interfaces
 */
@@ -382,7 +382,9 @@ async function sendMessage(payload: any, webhookUrl: string) {
 const port = Number(process.env.PORT) || 3000
 console.log(`Server is running on port ${port}`)
 
-devtools(app, { serveStatic })
+if (DEV_TOOLS === "enabled") {
+  devtools(app, { serveStatic })
+}
 
 serve({
   fetch: app.fetch,
